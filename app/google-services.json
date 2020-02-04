@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "231705394989",
+    "firebase_url": "https://moviecataloguefordicoding.firebaseio.com",
+    "project_id": "moviecataloguefordicoding",
+    "storage_bucket": "moviecataloguefordicoding.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231705394989:android:cae83fa60bb90d8466dda4",
+        "android_client_info": {
+          "package_name": "com.example.moviecataloguefordicoding"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "231705394989-6gk2fu7ss960m7nd9kdcrhg3k9tdc0d6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moviecataloguefordicoding",
+            "certificate_hash": "c499746adf61eb63e558368eeccb3e0866b366b9"
+          }
+        },
+        {
+          "client_id": "231705394989-k7so93650c42fj9p08f8qmtfatq5n2le.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-dUy8rx5XSxXiT2IRX4wPUvw9xTATSHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "231705394989-k7so93650c42fj9p08f8qmtfatq5n2le.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

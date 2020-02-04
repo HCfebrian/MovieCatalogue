@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MovieCatalogueForDicoding</string>
+    <string name="app_name">Pick The Show</string>
     <string name="title">title</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -18,5 +18,14 @@
     <string name="favorite_movie">Favorite Movie</string>
     <string name="hello_blank_fragment">hello_blank_fragment</string>
     <string name="favorite_series">Favorite TV</string>
+    <string name="search">search</string>
+    <string name="search_hint">Search Here</string>
+    <string name="appwidget_text">MOVIE FAVORITE</string>
+    <string name="empty_text">EMPTY DATA</string>
+    <string name="content_text">Chack Your Favorite Show On The App</string>
+    <string name="subtext">All Your Favorite Show On One Single App</string>
+    <string name="remainder_on">Remainder ON</string>
+    <string name="remainder_off">Remainder OFF</string>
+
 
 </resources>

@@ -2,11 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list_item"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/gray"
-    android:orientation="horizontal">
+    android:id="@+id/list_item"
+    >
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -15,7 +16,7 @@
         android:background="@drawable/round_corner"
         android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" >
 
     </FrameLayout>
 
@@ -106,9 +107,9 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/gray"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="8dp"
+        android:background="@color/gray">
 
     </FrameLayout>
 

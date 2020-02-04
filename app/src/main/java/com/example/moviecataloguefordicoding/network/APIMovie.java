@@ -8,15 +8,34 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface APIMovie {
-    @GET("movie")
+    @GET("discover/movie")
     Call<MoviesResponse> getPopularMovies(
             @Query("api_key") String apiKey,
             @Query("language") String language
     );
-
-    @GET("tv")
+    @GET("discover/tv")
     Call<TVResponse> getPopularTV(
             @Query("api_key") String apiKey,
             @Query("language") String language
+    );
+
+    @GET("search/movie")
+    Call<MoviesResponse> searchMovie(
+            @Query("api_key") String apiKey,
+            @Query("language") String language
+            ,@Query("query") String query
+    );
+    @GET("search/tv")
+    Call<TVResponse> searchTV(
+            @Query("api_key") String apiKey,
+            @Query("language") String language
+            ,@Query("query") String query
+    );
+    @GET("discover/movie")
+    Call<MoviesResponse> getTodayRelease(
+            @Query("api_key") String apiKey,
+            @Query("primary_release_date.gte") String todayDateGTE,
+            @Query("primary_release_date.lte") String todayDateLTE
+
     );
 }

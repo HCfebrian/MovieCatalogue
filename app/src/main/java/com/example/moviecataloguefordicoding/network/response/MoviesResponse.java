@@ -1,11 +1,11 @@
 package com.example.moviecataloguefordicoding.network.response;
 
 
+import java.util.List;
+
 import com.example.moviecataloguefordicoding.model.ModelFilm;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
 
 public class MoviesResponse {
 
@@ -26,6 +26,7 @@ public class MoviesResponse {
     public List<ModelFilm> getResults() {
         return results;
     }
+
 
 
 }

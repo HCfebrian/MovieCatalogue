@@ -1,12 +1,16 @@
 package com.example.moviecataloguefordicoding;
 
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +22,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.example.moviecataloguefordicoding.model.ModelFilm;
 import com.example.moviecataloguefordicoding.model.ModelTV;
 import com.example.moviecataloguefordicoding.room.ShowDatabase;
+import com.example.moviecataloguefordicoding.widget.WidgetMovieFavotite;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Objects;
@@ -27,6 +32,8 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class DetailMovieActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String EXTRA_FILM = "EXTRA_FILM";
+    public static final String BASE_URL= "https://image.tmdb.org/t/p/w500";
+
     public static final String EXtra_TV = "EXTRA_TV";
     static ModelFilm movie;
     static ModelTV tv;
@@ -65,12 +72,13 @@ public class DetailMovieActivity extends AppCompatActivity implements View.OnCli
             progressDrawable.start();
 
             Glide.with(this)
-                    .load("https://image.tmdb.org/t/p/w500" + movie.getBackground())
+                    .load(BASE_URL + movie.getBackground())
                     .placeholder(progressDrawable)
+                    .error(R.drawable.ic_broken_image_black_24dp)
                     .into(ivBackground);
 
             Glide.with(this)
-                    .load("https://image.tmdb.org/t/p/w500" + movie.getPhoto())
+                    .load(BASE_URL + movie.getPhoto())
                     .transform(new RoundedCornersTransformation(20, 10), new CenterCrop())
                     .into(ivMainPoster);
 
@@ -89,12 +97,12 @@ public class DetailMovieActivity extends AppCompatActivity implements View.OnCli
             progressDrawable.start();
 
             Glide.with(this)
-                    .load("https://image.tmdb.org/t/p/w500" + tv.getBackground())
+                    .load(BASE_URL + tv.getBackground())
                     .placeholder(progressDrawable)
                     .into(ivBackground);
 
             Glide.with(this)
-                    .load("https://image.tmdb.org/t/p/w500" + tv.getPhoto())
+                    .load(BASE_URL + tv.getPhoto())
                     .transform(new RoundedCornersTransformation(20, 10), new CenterCrop())
                     .into(ivMainPoster);
             istv = 1;
@@ -121,9 +129,7 @@ public class DetailMovieActivity extends AppCompatActivity implements View.OnCli
             final favTVThread task = new favTVThread(getApplicationContext());
             task.execute();
         }
-        Log.d("DB", "onClick: ");
-
-
+        
     }
 
     static private class favThread extends AsyncTask<Void, Void, Void> {
@@ -141,25 +147,24 @@ public class DetailMovieActivity extends AppCompatActivity implements View.OnCli
         protected Void doInBackground(Void... voids) {
 
             ShowDatabase showDatabase = ShowDatabase.getInstance(mContext);
-            isFav = showDatabase.showDao().isFavMovie(movie.getId());
-            if (isFav == 1) {
+            isFav =showDatabase.showDao().isFavMovie(movie.getId());
+            if(isFav ==1){
                 showDatabase.showDao().deleteMovie(movie);
-            } else {
-                ModelFilm show = new ModelFilm();
-                show.setId(movie.getId());
-                show.setBackground(movie.getBackground());
-                show.setDescription(movie.getDescription());
-                show.setPhoto(movie.getPhoto());
-                show.setPopularity(movie.getPopularity());
-                show.setRating(movie.getRating());
-                show.setRelease(movie.getRelease());
-                show.setTitle(movie.getTitle());
-                show.setGenre(movie.getGenre());
-                show.setTv(movie.getTv());
-                show.setFav(1);
-                Log.d("DB", movie.getTitle());
-                showDatabase.showDao().insertShow(show);
-
+            }else{
+            ModelFilm show = new ModelFilm();
+            show.setId(movie.getId());
+            show.setBackground(movie.getBackground());
+            show.setDescription(movie.getDescription());
+            show.setPhoto(movie.getPhoto());
+            show.setPopularity(movie.getPopularity());
+            show.setRating(movie.getRating());
+            show.setRelease(movie.getRelease());
+            show.setTitle(movie.getTitle());
+            show.setGenre(movie.getGenre());
+            show.setTv(movie.getTv());
+            show.setFav(1);
+            Log.d("DB", movie.getTitle());
+            showDatabase.showDao().insertShow(show);
 
             }
             Log.d("DB", "AsyncTask finished");
@@ -170,10 +175,11 @@ public class DetailMovieActivity extends AppCompatActivity implements View.OnCli
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
-            if (isFav == 1) {
-                Toast.makeText(mContext, "DELETED FROM FAVORITE", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(mContext, "ADDED TO FAVORITE", Toast.LENGTH_SHORT).show();
+            if(isFav==1){
+                Toast.makeText(mContext,"DELETED FROM FAVORITE",Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(mContext,"ADDED TO FAVORITE",Toast.LENGTH_SHORT).show();
             }
 
 
@@ -195,22 +201,22 @@ public class DetailMovieActivity extends AppCompatActivity implements View.OnCli
 
             ShowDatabase showDatabase = ShowDatabase.getInstance(mContext);
             isFav = showDatabase.showDao().isFavTV(tv.getId());
-            if (isFav == 1) {
+            if(isFav==1){
                 showDatabase.showDao().deleteTV(tv);
-            } else {
-                ModelTV show = new ModelTV();
-                show.setId(tv.getId());
-                show.setBackground(tv.getBackground());
-                show.setDescription(tv.getDescription());
-                show.setPhoto(tv.getPhoto());
-                show.setPopularity(tv.getPopularity());
-                show.setRating(tv.getRating());
-                show.setRelease(tv.getRelease());
-                show.setTitle(tv.getTitle());
-                show.setGenre(tv.getGenre());
-                show.setTv(tv.getTv());
-                show.setFav(1);
-                showDatabase.showDao().insertShowTV(show);
+            }else{
+            ModelTV show = new ModelTV();
+            show.setId(tv.getId());
+            show.setBackground(tv.getBackground());
+            show.setDescription(tv.getDescription());
+            show.setPhoto(tv.getPhoto());
+            show.setPopularity(tv.getPopularity());
+            show.setRating(tv.getRating());
+            show.setRelease(tv.getRelease());
+            show.setTitle(tv.getTitle());
+            show.setGenre(tv.getGenre());
+            show.setTv(tv.getTv());
+            show.setFav(1);
+            showDatabase.showDao().insertShowTV(show);
 
             }
             return null;
@@ -221,11 +227,13 @@ public class DetailMovieActivity extends AppCompatActivity implements View.OnCli
             super.onPostExecute(aVoid);
 
 
-            if (isFav == 1) {
-                Toast.makeText(mContext, "DELETED FROM FAVORITE", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(mContext, "ADDED TO FAVORITE", Toast.LENGTH_SHORT).show();
+            if(isFav==1){
+                Toast.makeText(mContext,"DELETED FROM FAVORITE",Toast.LENGTH_SHORT).show();
             }
+            else{
+                Toast.makeText(mContext,"ADDED TO FAVORITE",Toast.LENGTH_SHORT).show();
+            }
+
 
 
         }

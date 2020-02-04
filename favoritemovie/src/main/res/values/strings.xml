@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FavoriteMovie</string>
+    <string name="title">title</string>
+    <string name="popularity">popularity</string>
+    <string name="rating">rating</string>
+    <string name="text_view">text_view</string>
+    <string name="poster_film">poster_film</string>
+</resources>

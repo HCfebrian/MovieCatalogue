@@ -10,20 +10,22 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/gray"
+        android:layout_height="60dp"
+        android:gravity="center_horizontal"
+        android:foregroundGravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorPrimary"
+        >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:text="@string/pick_the_show"
-            android:textColor="@color/black"
+            android:layout_gravity="center"
             android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
     </androidx.appcompat.widget.Toolbar>
 
 
@@ -49,7 +51,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:tabSelectedTextColor="@color/black"
-        app:tabTextColor="@color/darkgray" />
+        app:tabTextColor="@color/colorAccent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,4 +13,15 @@
     <string name="poster_film">Poster Film</string>
     <string name="change_language">Change Language</string>
     <string name="release_year">Release Year</string>
+    <string name="favorite_movie">Favorite Movie</string>
+    <string name="hello_blank_fragment">Hello Blank Fragment</string>
+    <string name="favorite_series">Favorite TV</string>
+    <string name="search">search</string>
+    <string name="search_hint">Search Here</string>
+    <string name="appwidget_text">MOVIE FAVORITE</string>
+    <string name="empty_text">EMPTY DATA</string>
+    <string name="content_text">Chack Your Favorite Show On The App</string>
+    <string name="subtext">All Your Favorite Show On One Single App</string>
+    <string name="remainder_on">Remainder ON</string>
+    <string name="remainder_off">Remainder OFF</string>
 </resources>

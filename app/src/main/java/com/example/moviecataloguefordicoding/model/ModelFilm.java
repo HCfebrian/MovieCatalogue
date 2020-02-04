@@ -9,20 +9,8 @@ import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-
-@Entity(tableName = "movie")
+@Entity (tableName = "movie")
 public class ModelFilm implements Parcelable {
-    public static final Creator<ModelFilm> CREATOR = new Creator<ModelFilm>() {
-        @Override
-        public ModelFilm createFromParcel(Parcel source) {
-            return new ModelFilm(source);
-        }
-
-        @Override
-        public ModelFilm[] newArray(int size) {
-            return new ModelFilm[size];
-        }
-    };
     @SerializedName("id")
     @PrimaryKey
     private int id;
@@ -30,46 +18,29 @@ public class ModelFilm implements Parcelable {
     @ColumnInfo(name = "title")
     private String title;
     @SerializedName("overview")
-    @ColumnInfo(name = "description")
+    @ColumnInfo (name = "description")
     private String description;
-    @ColumnInfo(name = "genre")
+    @ColumnInfo (name = "genre")
     private String genre;
     @SerializedName("popularity")
-    @ColumnInfo(name = "popularity")
+    @ColumnInfo (name = "popularity")
     private String popularity;
     @SerializedName("vote_average")
-    @ColumnInfo(name = "rating")
+    @ColumnInfo (name = "rating")
     private String rating;
     @SerializedName("release_date")
-    @ColumnInfo(name = "release")
+    @ColumnInfo (name = "release")
     private String release;
     @SerializedName("poster_path")
-    @ColumnInfo(name = "photo")
+    @ColumnInfo (name = "photo")
     private String photo;
     @SerializedName("backdrop_path")
-    @ColumnInfo(name = "background")
+    @ColumnInfo (name = "background")
     private String background;
-    @ColumnInfo(name = "tv")
+    @ColumnInfo (name ="tv")
     private int tv = 0;
-    @ColumnInfo(name = "fav")
-    private int fav = 0;
-
-    public ModelFilm() {
-    }
-
-    protected ModelFilm(Parcel in) {
-        this.id = in.readInt();
-        this.title = in.readString();
-        this.description = in.readString();
-        this.genre = in.readString();
-        this.popularity = in.readString();
-        this.rating = in.readString();
-        this.release = in.readString();
-        this.photo = in.readString();
-        this.background = in.readString();
-        this.tv = in.readInt();
-        this.fav = in.readInt();
-    }
+    @ColumnInfo (name ="fav")
+    private int fav=0;
 
     public int getFav() {
         return fav;
@@ -78,6 +49,11 @@ public class ModelFilm implements Parcelable {
     public void setFav(int fav) {
         this.fav = fav;
     }
+
+    public ModelFilm() {
+    }
+
+
 
     public int getTv() {
         return tv;
@@ -91,68 +67,69 @@ public class ModelFilm implements Parcelable {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getRelease() {
         return release;
     }
 
-    public void setRelease(String release) {
-        this.release = release;
-    }
 
     public String getGenre() {
         return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
     }
 
     public String getPopularity() {
         return popularity;
     }
 
-    public void setPopularity(String popularity) {
-        this.popularity = popularity;
-    }
 
     public String getRating() {
         return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDescription() {
         return description;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+    public String getBackground() {
+        return background;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getPhoto() {
-        return photo;
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setPopularity(String popularity) {
+        this.popularity = popularity;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public void setRelease(String release) {
+        this.release = release;
     }
 
     public void setPhoto(String photo) {
         this.photo = photo;
-    }
-
-    public String getBackground() {
-        return background;
     }
 
     public void setBackground(String background) {
@@ -178,5 +155,31 @@ public class ModelFilm implements Parcelable {
         dest.writeInt(this.tv);
         dest.writeInt(this.fav);
     }
+
+    protected ModelFilm(Parcel in) {
+        this.id = in.readInt();
+        this.title = in.readString();
+        this.description = in.readString();
+        this.genre = in.readString();
+        this.popularity = in.readString();
+        this.rating = in.readString();
+        this.release = in.readString();
+        this.photo = in.readString();
+        this.background = in.readString();
+        this.tv = in.readInt();
+        this.fav = in.readInt();
+    }
+
+    public static final Creator<ModelFilm> CREATOR = new Creator<ModelFilm>() {
+        @Override
+        public ModelFilm createFromParcel(Parcel source) {
+            return new ModelFilm(source);
+        }
+
+        @Override
+        public ModelFilm[] newArray(int size) {
+            return new ModelFilm[size];
+        }
+    };
 }
 
