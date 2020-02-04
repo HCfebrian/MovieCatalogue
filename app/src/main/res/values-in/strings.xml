@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MovieCatalogueForDicoding</string>
+    <string name="title">title</string>
+
+
+    <string name="movie">Film</string>
+    <string name="tv_series">Serial TV</string>
+    <string name="ini_detail_film">ini detil film</string>
+    <string name="genre">Genre</string>
+    <string name="popularity">Popularitas</string>
+    <string name="rating">Rating</string>
+    <string name="text_view">TextView</string>
+    <string name="synopsis">Sinopsis</string>
+    <string name="poster_film">Poster Film</string>
+    <string name="change_language">Ganti Bahasa</string>
+    <string name="release_year">Tahun Keluar</string>
+</resources>
